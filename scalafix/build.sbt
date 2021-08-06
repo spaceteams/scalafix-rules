@@ -6,16 +6,16 @@ lazy val scala3Version = "3.0.1"
 inThisBuild(
   List(
     organization := "com.example",
-    homepage := Some(url("https://github.com/com/example")),
+    homepage := Some(url("https://www.spaceteams.de")),
     licenses := List(
       "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
     ),
     developers := List(
       Developer(
-        "example-username",
-        "Example Full Name",
-        "example@email.com",
-        url("https://example.com")
+        "alexanderkogan",
+        "Alexander Kogan",
+        "alexander.kogan@spaceteams.de",
+        url("https://www.spaceteams.de")
       )
     ),
     semanticdbEnabled := true,

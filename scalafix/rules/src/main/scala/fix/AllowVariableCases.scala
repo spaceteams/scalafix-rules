@@ -36,8 +36,6 @@ class AllowVariableCases(config: AllowedCasesConfig) extends SyntacticRule("Allo
 
 case class DisallowedCase(position: Position, actualCase: String, allowedCases: List[String]) extends Diagnostic {
   override def message: String = s"$actualCase is not allowed. Allowed cases are [${allowedCases.mkString(", ")}]."
-
-  //  override def equals(that: Any): Boolean = ???
 }
 
 case class AllowedCasesConfig(allowedCases: List[String] = List("camelCase")) {
