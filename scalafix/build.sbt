@@ -5,11 +5,9 @@ lazy val scala3Version = "3.0.1"
 
 inThisBuild(
   List(
-    organization := "com.example",
-    homepage := Some(url("https://www.spaceteams.de")),
-    licenses := List(
-      "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
-    ),
+    organization := "de.spaceteams",
+    homepage := Some(url("https://github.com/spaceteams/scalafix-rules")),
+    licenses := List(),
     developers := List(
       Developer(
         "alexanderkogan",
