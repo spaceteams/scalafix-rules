@@ -1,4 +1,5 @@
 # Scalafix rules
+[![Developed during Spacetime at Spaceteams](https://raw.githubusercontent.com/spaceteams/badges/main/developed-during-spacetime.svg)](https://spaceteams.de)
 
 ## Allow Variable Cases
 This rule checks, if variables are named in one of the cases that you have defined in the config.
