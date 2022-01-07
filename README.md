@@ -17,6 +17,17 @@ You can define multiple cases, that are allowed. For example `[camelCase, Pascal
 `lowercase` is also recognized, but is allowed with camelCase or snake_case.
 
 ### Usage
-You can use this rule by executing `scalafix github:spaceteams/scalafix-rules/AllowVariableCases` in the sbt shell.
+Configure the rule by setting `AllowVariableCases.allowedCases = [...]` in your `.scalafix.conf`. For example: `AllowVariableCases.allowedCases = ["snake_case"]`
 
-Configure it by setting `AllowVariableCases.allowedCases = [...]` in your `.scalafix.conf`. For example: `AllowVariableCases.allowedCases = ["snake_case"]`
+#### Maven Central
+You can execute `scalafix dependency:AllowVariableCases@de.spaceteams:scalafix-rules:1.0.0` in the sbt shell.
+
+To install the rule for your build update the scalafixDependencies in your `build.sbt` for example like this
+```sbt
+ThisBuild / scalafixDependencies +=
+  "de.spaceteams" %% "scalafix-rules" % "1.0.0"
+```
+and execute `scalafix AllowVariableCases` in the sbt shell.
+
+#### GitHub
+You can use this rule directly from GitHub by executing `scalafix github:spaceteams/scalafix-rules/AllowVariableCases` in the sbt shell.
