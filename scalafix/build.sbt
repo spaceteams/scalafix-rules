@@ -3,23 +3,42 @@ lazy val V = _root_.scalafix.sbt.BuildInfo
 lazy val rulesCrossVersions = Seq(V.scala213, V.scala212, V.scala211)
 lazy val scala3Version = "3.0.1"
 
-inThisBuild(
-  List(
-    organization := "de.spaceteams",
-    homepage := Some(url("https://github.com/spaceteams/scalafix-rules")),
-    licenses := List(),
-    developers := List(
-      Developer(
-        "alexanderkogan",
-        "Alexander Kogan",
-        "alexander.kogan@spaceteams.de",
-        url("https://www.spaceteams.de")
-      )
-    ),
-    semanticdbEnabled := true,
-    semanticdbVersion := scalafixSemanticdb.revision
+ThisBuild / organization := "de.spaceteams"
+ThisBuild / organizationName := "Spaceteams GmbH"
+ThisBuild / organizationHomepage := Some(url("https://spaceteams.de"))
+
+ThisBuild / scmInfo := Some(
+  ScmInfo(
+    browseUrl  = url("https://github.com/spaceteams/scalafix-rules"),
+    connection = "scm:git@github.com:spaceteams/scalafix-rules.git"
   )
 )
+ThisBuild / developers := List(
+  Developer(
+    id    = "akogan",
+    name  = "Alexander Kogan",
+    email = "alexander.kogan@spaceteams.de",
+    url   = url("https://spaceteams.de")
+  )
+)
+
+ThisBuild / description := "Collection of rules for scalafix."
+ThisBuild / licenses := List("BSD 3-Clause License" -> new URL("https://opensource.org/licenses/BSD-3-Clause"))
+ThisBuild / homepage := Some(url("https://github.com/spaceteams/scalafix-rules"))
+
+ThisBuild / version := "1.0.0"
+ThisBuild / versionScheme := Some("semver-spec")
+
+ThisBuild / semanticdbEnabled := true
+ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
+
+ThisBuild / pomIncludeRepository := { _ => false }
+ThisBuild / publishTo := {
+  val nexus = "https://s01.oss.sonatype.org/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
+ThisBuild / publishMavenStyle := true
 
 lazy val `allow-variable-cases` = (project in file("."))
   .aggregate(
@@ -34,7 +53,7 @@ lazy val `allow-variable-cases` = (project in file("."))
 
 lazy val rules = projectMatrix
   .settings(
-    moduleName := "scalafix",
+    moduleName := "scalafix-rules",
     libraryDependencies += "ch.epfl.scala" %% "scalafix-core" % V.scalafixVersion
   )
   .defaultAxes(VirtualAxis.jvm)
