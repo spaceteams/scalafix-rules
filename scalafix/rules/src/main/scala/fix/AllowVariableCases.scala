@@ -53,7 +53,7 @@ case class AllowedCasesConfig(allowedCases: List[String] = List("camelCase")) {
     }
 
   def getCase(text: String): String = {
-    val twoUpperCaseLettersFollowing = "[A-Z]{2}".r findFirstMatchIn text
+    val multipleUpperCaseLettersFollowing = "[A-Z]{3}".r findFirstMatchIn text
     val containsUnderscore = "_".r findFirstMatchIn text
     val containsUpperCaseLetters = "[A-Z].".r findFirstMatchIn text
     val containsLowerCaseLetters = "[a-z].".r findFirstMatchIn text
@@ -61,9 +61,9 @@ case class AllowedCasesConfig(allowedCases: List[String] = List("camelCase")) {
     val firstLetterUpperCase = "^[A-Z].".r findFirstMatchIn text
 
     val isLowerCase = containsOnlyLowerCaseLetters.isDefined
-    val isCamelCase = firstLetterUpperCase.isEmpty && twoUpperCaseLettersFollowing.isEmpty && containsUnderscore.isEmpty
+    val isCamelCase = firstLetterUpperCase.isEmpty && multipleUpperCaseLettersFollowing.isEmpty && containsUnderscore.isEmpty
     val isSnakeCase = (containsUpperCaseLetters.isEmpty && containsUnderscore.isDefined)
-    val isPascalCase = firstLetterUpperCase.isDefined && twoUpperCaseLettersFollowing.isEmpty && containsUnderscore.isEmpty
+    val isPascalCase = firstLetterUpperCase.isDefined && multipleUpperCaseLettersFollowing.isEmpty && containsUnderscore.isEmpty
     val isUpperCase = containsLowerCaseLetters.isEmpty
 
     if (isLowerCase) lowercase // This has to be first, because it's a special case. For example, "word" is both valid in camel and snake case.
