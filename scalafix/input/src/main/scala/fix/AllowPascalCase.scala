@@ -9,6 +9,8 @@ abstract class AllowPascalCase {
   val Word: Any
   val With1Number: Any
 
+  val WithIWord: Any
+
   val camelCase: Any // assert: AllowVariableCases
   val snake_case: Any // assert: AllowVariableCases
   val mixed_Case: Any // assert: AllowVariableCases

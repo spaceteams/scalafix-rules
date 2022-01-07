@@ -9,6 +9,8 @@ abstract class AllowCamelCase {
   val lowercase: Any
   val with1Number: Any
 
+  val withIWord: Any
+
   val PascalCase: Any // assert: AllowVariableCases
   val UPPER_CASE: Any // assert: AllowVariableCases
   val mixed_Case: Any // assert: AllowVariableCases
